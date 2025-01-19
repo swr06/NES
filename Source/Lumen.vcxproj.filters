@@ -28,9 +28,6 @@
     <Filter Include="NES-Core\Dependencies\imguizmo">
       <UniqueIdentifier>{3250f051-d038-4bcb-8b9c-0463d0d43469}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NES-Core\Emulation-Core">
-      <UniqueIdentifier>{0d052868-d564-4a34-9da9-689e60e03f7a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="NES-Core\Framework-Core">
       <UniqueIdentifier>{a6a60ed4-0c6e-4fba-9758-5f91deced8e1}</UniqueIdentifier>
     </Filter>
@@ -45,6 +42,9 @@
     </Filter>
     <Filter Include="NES-Core\Framework-Core\Shaders">
       <UniqueIdentifier>{27d3308d-692a-4087-8a2c-eb7bc500f381}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NES-Core\Emulation-Core">
+      <UniqueIdentifier>{0d052868-d564-4a34-9da9-689e60e03f7a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -162,7 +162,10 @@
     <ClInclude Include="Core\Application\AsciiPrint.h">
       <Filter>NES-Core\Framework-Core\Application</Filter>
     </ClInclude>
-    <ClInclude Include="Core\CoreEngine\Emulation.h">
+    <ClInclude Include="Core\CoreEngine\Emulator.h">
+      <Filter>NES-Core\Emulation-Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\CoreEngine\Common.h">
       <Filter>NES-Core\Emulation-Core</Filter>
     </ClInclude>
   </ItemGroup>
@@ -262,6 +265,9 @@
     </ClCompile>
     <ClCompile Include="Core\Orthographic.cpp">
       <Filter>NES-Core\Framework-Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\CoreEngine\Emulator.cpp">
+      <Filter>NES-Core\Emulation-Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

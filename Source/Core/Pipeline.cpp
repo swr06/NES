@@ -4,8 +4,7 @@
 #include <thread>
 #include <chrono>
 
-#define NES_WIDTH 256
-#define NES_HEIGHT 240
+#include "CoreEngine/Emulator.h"
 
 namespace NESEmu {
 	const int TARGET_FPS = 60; // <- NES Runs at 60 FPS
@@ -14,8 +13,6 @@ namespace NESEmu {
 	float CurrentTime = glfwGetTime();
 	float Frametime = 0.0f;
 	float DeltaTime = 0.0f;
-
-	uint8_t NESFrameBuffer[NES_WIDTH * NES_HEIGHT * 3];
 
 	class RayTracerApp : public NESEmu::Application
 	{
@@ -153,35 +150,10 @@ namespace NESEmu {
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-
-		for (int y = 0; y < NES_HEIGHT; ++y) {
-			for (int x = 0; x < NES_WIDTH; ++x) {
-				//bool isWhite = ((x / 8 + y / 8) % 2) == (0);
-
-				float X = (float)x / (float)NES_WIDTH;
-				float Y = (float)y / (float)NES_HEIGHT;
-				X = X * 2. - 1.;
-				Y = Y * 2. - 1.;
-				X *=2.5f; Y *= 2.5f;
-
-				if (X * X + Y * Y < 1.0f) {
-					NESFrameBuffer[(y * NES_WIDTH + x) * 3 + 0] = 255; // R
-					NESFrameBuffer[(y * NES_WIDTH + x) * 3 + 1] = 255; // G
-					NESFrameBuffer[(y * NES_WIDTH + x) * 3 + 2] = 255; // B
-				}
-				else {
-					NESFrameBuffer[(y * NES_WIDTH + x) * 3 + 0] = 0; // R
-					NESFrameBuffer[(y * NES_WIDTH + x) * 3 + 1] = 0; // G
-					NESFrameBuffer[(y * NES_WIDTH + x) * 3 + 2] = 0; // B
-				}
-
-				//NESFrameBuffer[(y * NES_WIDTH + x) * 3 + 0] = (RNG.Float() * 255.); // R
-				//NESFrameBuffer[(y * NES_WIDTH + x) * 3 + 1] = (RNG.Float() * 255.); // G
-				//NESFrameBuffer[(y * NES_WIDTH + x) * 3 + 2] = (RNG.Float() * 255.); // B
-			}
-		}
-
 		while (!glfwWindowShouldClose(app.GetWindow())) {
+
+			// Emulator update
+			NESEmu::Update(CurrentTime, DeltaTime);
 
 			app.vsync = true;
 
@@ -192,7 +164,7 @@ namespace NESEmu {
 			glDisable(GL_BLEND);
 
 			glBindTexture(GL_TEXTURE_2D, NESTexture);
-			glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, NES_WIDTH, NES_HEIGHT, GL_RGB, GL_UNSIGNED_BYTE, NESFrameBuffer);
+			glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, NES_WIDTH, NES_HEIGHT, GL_RGB, GL_UNSIGNED_BYTE, NESEmu::GetFramebuffer());
 
 			// Blit Final Result 
 			glBindFramebuffer(GL_FRAMEBUFFER,0);
@@ -204,8 +176,6 @@ namespace NESEmu {
 			ImGui::Begin("NES Display", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
 			ImGui::Image((void*)(intptr_t)NESTexture, ImVec2(NES_WIDTH * 2.5, NES_HEIGHT * 2.5));
 			ImGui::End();
-
-
 
 			BlitShader.Use();
 			ScreenQuadVAO.Bind();

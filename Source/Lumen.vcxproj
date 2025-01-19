@@ -152,7 +152,8 @@
     <ClInclude Include="Core\Application\Application.h" />
     <ClInclude Include="Core\Application\AsciiPrint.h" />
     <ClInclude Include="Core\Application\Logger.h" />
-    <ClInclude Include="Core\CoreEngine\Emulation.h" />
+    <ClInclude Include="Core\CoreEngine\Common.h" />
+    <ClInclude Include="Core\CoreEngine\Emulator.h" />
     <ClInclude Include="Core\GLClasses\ComputeShader.h" />
     <ClInclude Include="Core\GLClasses\CubeTextureMap.h" />
     <ClInclude Include="Core\GLClasses\DepthBuffer.h" />
@@ -195,6 +196,7 @@
   <ItemGroup>
     <ClCompile Include="Core\Application\Application.cpp" />
     <ClCompile Include="Core\Application\Logger.cpp" />
+    <ClCompile Include="Core\CoreEngine\Emulator.cpp" />
     <ClCompile Include="Core\GLClasses\ComputeShader.cpp" />
     <ClCompile Include="Core\GLClasses\CubeTextureMap.cpp" />
     <ClCompile Include="Core\GLClasses\DepthBuffer.cpp" />
