@@ -152,6 +152,7 @@
     <ClInclude Include="Core\Application\Application.h" />
     <ClInclude Include="Core\Application\AsciiPrint.h" />
     <ClInclude Include="Core\Application\Logger.h" />
+    <ClInclude Include="Core\CoreEngine\Emulation.h" />
     <ClInclude Include="Core\GLClasses\ComputeShader.h" />
     <ClInclude Include="Core\GLClasses\CubeTextureMap.h" />
     <ClInclude Include="Core\GLClasses\DepthBuffer.h" />
