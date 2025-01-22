@@ -164,6 +164,9 @@
     <ClInclude Include="Core\CoreEngine\Common.h">
       <Filter>NES-Core\Emulation-Core</Filter>
     </ClInclude>
+    <ClInclude Include="Core\CoreEngine\6502.h">
+      <Filter>NES-Core\Emulation-Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dependencies\imgui\imgui.cpp">
@@ -263,6 +266,9 @@
       <Filter>NES-Core\Framework-Core</Filter>
     </ClCompile>
     <ClCompile Include="Core\CoreEngine\Emulator.cpp">
+      <Filter>NES-Core\Emulation-Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\CoreEngine\6502.cpp">
       <Filter>NES-Core\Emulation-Core</Filter>
     </ClCompile>
   </ItemGroup>

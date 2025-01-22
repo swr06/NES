@@ -152,6 +152,7 @@
     <ClInclude Include="Core\Application\Application.h" />
     <ClInclude Include="Core\Application\AsciiPrint.h" />
     <ClInclude Include="Core\Application\Logger.h" />
+    <ClInclude Include="Core\CoreEngine\6502.h" />
     <ClInclude Include="Core\CoreEngine\Common.h" />
     <ClInclude Include="Core\CoreEngine\Emulator.h" />
     <ClInclude Include="Core\GLClasses\ComputeShader.h" />
@@ -196,6 +197,7 @@
   <ItemGroup>
     <ClCompile Include="Core\Application\Application.cpp" />
     <ClCompile Include="Core\Application\Logger.cpp" />
+    <ClCompile Include="Core\CoreEngine\6502.cpp" />
     <ClCompile Include="Core\CoreEngine\Emulator.cpp" />
     <ClCompile Include="Core\GLClasses\ComputeShader.cpp" />
     <ClCompile Include="Core\GLClasses\CubeTextureMap.cpp" />
